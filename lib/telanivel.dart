@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+
 import 'package:quizdev/botoesniveis.dart';
+import 'package:quizdev/colors.dart';
+import 'package:quizdev/tabnav.dart';
 
 class TelaNivel extends StatelessWidget {
   const TelaNivel({super.key});
@@ -8,29 +11,54 @@ class TelaNivel extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-          decoration: BoxDecoration(color: Colors.white),
-          child:const Center(
-            child:Padding(padding: EdgeInsets.all(50),
+          decoration: const BoxDecoration(color: Colors.white),
+          child: Padding(
+            padding: EdgeInsets.symmetric(vertical: 60, horizontal: 20),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Text(
-                  "Níveis",
-                  style: TextStyle(color: Colors.black, fontSize: 22),
+                Center(
+                  child: Text(
+                    "Níveis",
+                    style: TextStyle(color: Colors.black, fontSize: 23),
+                  ),
                 ),
-                SizedBox(height: 50),
-                BotoesNiveis(texto: "Fácil", cor: Colors.pink),
-
-                SizedBox(height: 50),
-                BotoesNiveis(texto: "Médio", cor: Colors.purple),
-
-                SizedBox(height: 50),
-                BotoesNiveis(texto: "Avançado", cor: Colors.orange)
-          
+                Divider(),
+                 
+                Expanded(
+                  child: Container(
+                    padding: EdgeInsets.only(top:90),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.all(20.0),
+                          child: BotoesNiveis(
+                              texto: "Fácil",
+                              cor: Colorsapp().violeta1),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.all(20.0),
+                          child: BotoesNiveis(
+                              texto: "Médio",
+                              cor: Colorsapp().violeta2),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.all(20.0),
+                          child: BotoesNiveis(
+                              texto: "Avançado",
+                              cor: Colorsapp().violeta3),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
               ],
-            ),),
+            ),
           )),
+      extendBody: true,
+      bottomNavigationBar: TabNav(telaatual: 0,),
     );
   }
 }
