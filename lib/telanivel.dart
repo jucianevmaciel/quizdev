@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-
+import 'package:get/get.dart';
 import 'package:quizdev/botoesniveis.dart';
 import 'package:quizdev/colors.dart';
+import 'package:quizdev/perguntas.dart';
 import 'package:quizdev/tabnav.dart';
 
 class TelaNivel extends StatelessWidget {
@@ -36,19 +37,26 @@ class TelaNivel extends StatelessWidget {
                           padding: EdgeInsets.all(20.0),
                           child: BotoesNiveis(
                               texto: "Fácil",
-                              cor: Colorsapp().violeta1),
+                              cor: Colorsapp().violeta1, clicar: (){
+                                Get.to(()=>Perguntas(nivel: 'facil',));
+                                },
+                              ),
                         ),
                         Padding(
                           padding: EdgeInsets.all(20.0),
                           child: BotoesNiveis(
                               texto: "Médio",
-                              cor: Colorsapp().violeta2),
+                              cor: Colorsapp().violeta2, clicar: (){
+                                Get.to(()=>Perguntas(nivel: 'medio',));
+                              },),
                         ),
                         Padding(
                           padding: EdgeInsets.all(20.0),
                           child: BotoesNiveis(
                               texto: "Avançado",
-                              cor: Colorsapp().violeta3),
+                              cor: Colorsapp().violeta3, clicar: (){
+                                Get.to(()=>Perguntas(nivel: 'dificil',));
+                              },),
                         )
                       ],
                     ),
@@ -56,7 +64,8 @@ class TelaNivel extends StatelessWidget {
                 ),
               ],
             ),
-          )),
+          ),
+          ),
       extendBody: true,
       bottomNavigationBar: TabNav(telaatual: 0,),
     );

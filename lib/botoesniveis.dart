@@ -3,11 +3,14 @@ import 'package:flutter/material.dart';
 class BotoesNiveis extends StatelessWidget {
   final String texto;
   final Color cor;
-  const BotoesNiveis({super.key, required this.texto, required this.cor});
+  final clicar;
+  const BotoesNiveis({super.key, required this.texto, required this.cor, this.clicar});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return GestureDetector( 
+      onTap: clicar,
+      child: Container(
       width: 320,
       height: 80,
       alignment: Alignment.center,
@@ -19,6 +22,7 @@ class BotoesNiveis extends StatelessWidget {
           style: TextStyle(color: Colors.black, fontSize: 23),
         ),
       ),
+    ),
     );
   }
 }
