@@ -9,9 +9,13 @@ class Perguntas extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-         decoration: BoxDecoration(color: nivel=="facil"? Colorsapp().violeta1: nivel == "medio"? Colorsapp().violeta2:  Colorsapp().violeta3,),
-
-
+        decoration: BoxDecoration(
+          color: nivel == "facil"
+              ? Colorsapp().violeta1
+              : nivel == "medio"
+                  ? Colorsapp().violeta2
+                  : Colorsapp().violeta3,
+        ),
       ),
     );
   }
