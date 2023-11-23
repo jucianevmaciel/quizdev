@@ -38,7 +38,7 @@ class TelaNivel extends StatelessWidget {
                           child: BotoesNiveis(
                               texto: "Fácil",
                               cor: Colorsapp().violeta1, clicar: (){
-                                Get.to(()=>Perguntas(nivel: 'facil',));
+                                Get.to(()=>Perguntas(nivel: 'Básico',));
                                 },
                               ),
                         ),
@@ -47,7 +47,7 @@ class TelaNivel extends StatelessWidget {
                           child: BotoesNiveis(
                               texto: "Médio",
                               cor: Colorsapp().violeta2, clicar: (){
-                                Get.to(()=>Perguntas(nivel: 'medio',));
+                                Get.to(()=>Perguntas(nivel: 'Médio',));
                               },),
                         ),
                         Padding(
@@ -55,7 +55,7 @@ class TelaNivel extends StatelessWidget {
                           child: BotoesNiveis(
                               texto: "Avançado",
                               cor: Colorsapp().violeta3, clicar: (){
-                                Get.to(()=>Perguntas(nivel: 'dificil',));
+                                Get.to(()=>Perguntas(nivel: 'Avançado',));
                               },),
                         )
                       ],
