@@ -30,7 +30,6 @@ class _TabNavState extends State<TabNav> {
           MaterialPageRoute<void>(builder: (context) => listatela[pos]));
     }
   }
-
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(

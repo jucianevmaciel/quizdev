@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quizdev/colors.dart';
+import 'package:quizdev/fimquiz.dart';
 import 'package:quizdev/quizinfor.dart';
 
 class Perguntas extends StatelessWidget {
@@ -51,8 +52,19 @@ class Perguntas extends StatelessWidget {
               nivel: nivel,
             ),
             Padding(
-              padding: const EdgeInsets.only(top:70),
-              child: ElevatedButton(onPressed: (){}, child: Text("Enviar", style: TextStyle(color: Colors.white, fontSize: 20),), ),
+              padding: const EdgeInsets.only(top: 70),
+              child: ElevatedButton(
+                onPressed: () {
+                                    Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => FimQuiz()),
+                  );
+                },
+                child: Text(
+                  "Enviar",
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                ),
+              ),
             )
           ],
         ),

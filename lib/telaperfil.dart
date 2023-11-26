@@ -56,7 +56,7 @@ class _TelaPerfilState extends State<TelaPerfil> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top:20,left: 25),
+                    padding: EdgeInsets.only(top: 20, left: 25),
                     child: Text("Juciane Vale Maciel",
                         style: TextStyle(fontSize: 20)),
                   ),
@@ -65,26 +65,25 @@ class _TelaPerfilState extends State<TelaPerfil> {
               Padding(
                 padding: EdgeInsets.only(top: 60, left: 8),
                 child: InforPerfil(
-                   texto: "Meus Dados",
-                   cor: Colors.white,
-                   iconData: Icons.list_alt,
-                    ),),
-        
-              Padding(
-                padding: EdgeInsets.only(top: 35, left: 8),
-                child: InforPerfil(
-                 texto: "Notificações",
-                 cor: Colors.white,
-                 iconData: Icons.notifications_none,
+                  texto: "Meus Dados",
+                  cor: Colors.white,
+                  iconData: Icons.list_alt,
                 ),
               ),
-
               Padding(
                 padding: EdgeInsets.only(top: 35, left: 8),
                 child: InforPerfil(
-                 texto: "Sobre",
-                 cor: Colors.white,
-                 iconData: Icons.help_outline,
+                  texto: "Notificações",
+                  cor: Colors.white,
+                  iconData: Icons.notifications_none,
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 35, left: 8),
+                child: InforPerfil(
+                  texto: "Sobre",
+                  cor: Colors.white,
+                  iconData: Icons.help_outline,
                 ),
               ),
             ],

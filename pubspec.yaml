@@ -66,6 +66,8 @@ flutter:
 
   assets:
       - assets/images/perfil.png
+      - assets/images/trofeu.png
+      
   #   - images/a_dot_ham.jpeg
 
 

@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 class InforPerfil extends StatelessWidget {
   final String texto;
   final Color cor;
-  final IconData iconData;  // Alterado para IconData em vez de Icon
+  final IconData iconData; // Alterado para IconData em vez de Icon
   const InforPerfil({
-    Key? key,  // Corrigido o super.key para Key? key
+    Key? key, // Corrigido o super.key para Key? key
     required this.texto,
     required this.cor,
     required this.iconData,
@@ -18,9 +18,11 @@ class InforPerfil extends StatelessWidget {
       height: 80,
       decoration: BoxDecoration(
         color: cor,
-         border: Border.all(
-          color: Colors.black,  // Cor da borda
-          width: 0.2, ),      
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(
+          color: Colors.black, // Cor da borda
+          width: 0.2,
+        ),
       ),
       child: Padding(
         padding: EdgeInsets.all(20),
@@ -28,7 +30,7 @@ class InforPerfil extends StatelessWidget {
           children: [
             Icon(
               iconData,
-              size: 30,  // Ajuste o tamanho do ícone conforme necessário
+              size: 30, // Ajuste o tamanho do ícone conforme necessário
               color: Colors.black,
             ),
             SizedBox(width: 10),

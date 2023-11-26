@@ -9,17 +9,19 @@ class QuizInfor extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: nivel == "Básico"? Colorsapp().violeta1: nivel == "Médio"?Colorsapp().violeta2: Colorsapp().violeta3,
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: ListTile(
-          title: Text(titulo, textAlign: TextAlign.center,),
-          
-          
-        ),
-      )
-
-      
-    );
+        color: nivel == "Básico"
+            ? Colorsapp().violeta1
+            : nivel == "Médio"
+                ? Colorsapp().violeta2
+                : Colorsapp().violeta3,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: ListTile(
+            title: Text(
+              titulo,
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ));
   }
 }
