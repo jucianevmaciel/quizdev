@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:quizdev/bancodedados/buscarquestoes.dart';
+import 'package:quizdev/bancodedados/questoes.dart';
 import 'package:quizdev/botoesniveis.dart';
 import 'package:quizdev/colors.dart';
 import 'package:quizdev/perguntas.dart';
@@ -10,6 +12,7 @@ class TelaNivel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int quantQuestoes = 3;
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(color: Colors.white),
@@ -38,8 +41,14 @@ class TelaNivel extends StatelessWidget {
                           texto: "Fácil",
                           cor: Colorsapp().violeta1,
                           clicar: () {
+                            List<Questoes> perguntasFaceis =
+                                buscaPerguntas("facil");
+                            List<Questoes> perguntasAleatorias =
+                                selecionaPerguntas(
+                                    perguntasFaceis, quantQuestoes);
                             Get.to(() => Perguntas(
-                                  nivel: 'Básico',
+                                  nivel: 'facil',
+                                  quantQuestoes: perguntasAleatorias,
                                 ));
                           },
                         ),
@@ -50,8 +59,14 @@ class TelaNivel extends StatelessWidget {
                           texto: "Médio",
                           cor: Colorsapp().violeta2,
                           clicar: () {
+                            List<Questoes> perguntasMedias =
+                                buscaPerguntas("medio");
+                            List<Questoes> perguntasAleatorias =
+                                selecionaPerguntas(
+                                    perguntasMedias, quantQuestoes);
                             Get.to(() => Perguntas(
-                                  nivel: 'Médio',
+                                  nivel: 'medio',
+                                  quantQuestoes: perguntasAleatorias,
                                 ));
                           },
                         ),
@@ -62,8 +77,14 @@ class TelaNivel extends StatelessWidget {
                           texto: "Avançado",
                           cor: Colorsapp().violeta3,
                           clicar: () {
+                            List<Questoes> perguntasMedias =
+                                buscaPerguntas("dificil");
+                            List<Questoes> perguntasAleatorias =
+                                selecionaPerguntas(
+                                    perguntasMedias, quantQuestoes);
                             Get.to(() => Perguntas(
-                                  nivel: 'Avançado',
+                                  nivel: 'dificil',
+                                  quantQuestoes: perguntasAleatorias,
                                 ));
                           },
                         ),

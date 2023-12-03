@@ -55,7 +55,7 @@ List <Questoes> perguntasquiz=[
         'resposta media 4',
       ],
       altercorreta: 0,
-      nivel: 'medio',
+      nivel: 'facil',
     ),
     Questoes(
       questoes: 'Pergunta Media 2',

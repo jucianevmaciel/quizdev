@@ -1,21 +1,53 @@
 import 'package:flutter/material.dart';
+import 'package:quizdev/bancodedados/questoes.dart';
 import 'package:quizdev/colors.dart';
 import 'package:quizdev/fimquiz.dart';
 import 'package:quizdev/quizinfor.dart';
 
-class Perguntas extends StatelessWidget {
+class Perguntas extends StatefulWidget {
   final String nivel;
-  const Perguntas({super.key, required this.nivel});
+  final List<Questoes> quantQuestoes;
+  const Perguntas(
+      {super.key, required this.nivel, required this.quantQuestoes});
+
+  @override
+  State<Perguntas> createState() => _PerguntasState();
+}
+
+class _PerguntasState extends State<Perguntas> {
+  int? respostaescolhida;
+  int perguntaAtual = 0;
+  int quantAcertos = 0;
+  void alternativaCorreta(int resposta) {
+    respostaescolhida=resposta;
+    if (respostaescolhida == widget.quantQuestoes[perguntaAtual].altercorreta) {
+      quantAcertos++;
+    }proximaPergunta();
+  }
+
+  void proximaPergunta() {
+    if (perguntaAtual < widget.quantQuestoes.length - 1) {
+      setState(() {
+        perguntaAtual++;
+        respostaescolhida = null;
+      });
+    } else {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => FimQuiz()),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(nivel),
+        title: Text(widget.nivel),
         centerTitle: true,
-        backgroundColor: nivel == "Básico"
+        backgroundColor: widget.nivel == "facil"
             ? Colorsapp().violeta1
-            : nivel == "Médio"
+            : widget.nivel == "medio"
                 ? Colorsapp().violeta2
                 : Colorsapp().violeta3,
       ),
@@ -24,51 +56,17 @@ class Perguntas extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              "o que é um robô?",
-              style: TextStyle(fontSize: 25),
+            Text(widget.quantQuestoes[perguntaAtual].questoes),
+            ...widget.quantQuestoes[perguntaAtual].alternativas.asMap().entries.map((e) {
+              int indexResposta = e.key;
+              String resposta = e.value;
+              return QuizInfor(titulo: resposta, nivel: widget.nivel, clicar: ()=> alternativaCorreta(indexResposta),);
+            }).toList(),
+                     ]
             ),
-            SizedBox(
-              height: 49,
-            ),
-            QuizInfor(
-              titulo:
-                  "Uma máquina  que realizar tarefas específicas automaticamente.",
-              nivel: nivel,
-            ),
-            QuizInfor(
-              titulo:
-                  "Uma máquina  que realizar tarefas específicas automaticamente.",
-              nivel: nivel,
-            ),
-            QuizInfor(
-              titulo:
-                  "Uma máquina  que realizar tarefas específicas automaticamente.",
-              nivel: nivel,
-            ),
-            QuizInfor(
-              titulo:
-                  "Uma máquina  que realizar tarefas específicas automaticamente.",
-              nivel: nivel,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 70),
-              child: ElevatedButton(
-                onPressed: () {
-                                    Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => FimQuiz()),
-                  );
-                },
-                child: Text(
-                  "Enviar",
-                  style: TextStyle(color: Colors.white, fontSize: 20),
-                ),
-              ),
-            )
-          ],
+           
         ),
-      ),
+      
     );
   }
 }
