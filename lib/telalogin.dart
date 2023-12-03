@@ -79,7 +79,6 @@ class _TelaLoginState extends State<TelaLogin> {
             ),
             GestureDetector(
               onTap: () {
-                // Adicione a lógica para a recuperação de senha aqui
                 print("Esqueceu a senha?");
               },
               child: Container(
