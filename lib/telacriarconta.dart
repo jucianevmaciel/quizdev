@@ -1,15 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:quizdev/colors.dart';
+import 'package:quizdev/login.dart';
 import 'package:quizdev/telanivel.dart';
 
 class CriarConta extends StatefulWidget {
-  const CriarConta({super.key});
+   CriarConta({super.key});
 
   @override
   State<CriarConta> createState() => _CriarContaState();
+ 
 }
 
 class _CriarContaState extends State<CriarConta> {
+   Login criarconta = Login();
+  TextEditingController recebeNome = TextEditingController();
+  TextEditingController recebeEmail = TextEditingController();
+  TextEditingController recebeSenha = TextEditingController();
+        
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,6 +47,7 @@ class _CriarContaState extends State<CriarConta> {
                   children: [
                     // Campo de e-mail
                     TextField(
+                      controller: recebeNome,
                       decoration: InputDecoration(
                         labelText: "Nome",
                         hintText: "Digite o nome",
@@ -61,9 +69,10 @@ class _CriarContaState extends State<CriarConta> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+
                     // Campo de senha
                     TextField(
-                      obscureText: true,
+                      controller: recebeEmail,
                       decoration: InputDecoration(
                         labelText: "Email",
                         hintText: "Digite o email",
@@ -87,6 +96,8 @@ class _CriarContaState extends State<CriarConta> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     TextField(
+                      controller: recebeSenha,
+                      obscureText: true,
                       decoration: InputDecoration(
                         labelText: "Senha",
                         hintText: "Digite a senha",
@@ -104,10 +115,11 @@ class _CriarContaState extends State<CriarConta> {
               height: 45,
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => TelaNivel()),
-                  );
+                  // Navigator.pushReplacement(
+                  //   context,
+                  //   MaterialPageRoute(builder: (context) => TelaNivel()),
+                  // );
+                   criarconta.criarconta(recebeNome.text, recebeEmail.text, recebeSenha.text);
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.white,

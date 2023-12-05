@@ -4,7 +4,6 @@ import 'package:quizdev/bancodedados/questoes.dart';
 import 'package:quizdev/colors.dart';
 import 'package:quizdev/fimquiz.dart';
 import 'package:quizdev/quizinfor.dart';
-import 'package:get/get.dart';
 
 class Perguntas extends StatefulWidget {
   final String nivel;
@@ -58,13 +57,19 @@ class _PerguntasState extends State<Perguntas> {
                 : Colorsapp().violeta3,
       ),
       body: Padding(
-        padding: const EdgeInsets.fromLTRB(25, 0, 25, 0),
+        padding: const EdgeInsets.fromLTRB(25, 64, 25, 40),
         child:
-            Column(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-          Container(
-            child: Text(widget.quantQuestoes[perguntaAtual].questoes),
-          ),
-          ...widget.quantQuestoes[perguntaAtual].alternativas
+            Column(mainAxisAlignment: MainAxisAlignment.start, children: [
+                    Container(
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 40),
+             child: Text(
+                widget.quantQuestoes[perguntaAtual].questoes,
+                style: TextStyle(fontSize: 25, fontFamily: "Poppins"),
+              ),
+            ),
+                    ),
+                    ...widget.quantQuestoes[perguntaAtual].alternativas
               .asMap()
               .entries
               .map((e) {
@@ -75,8 +80,8 @@ class _PerguntasState extends State<Perguntas> {
               nivel: widget.nivel,
               clicar: () => alternativaCorreta(indexResposta),
             );
-          }).toList(),
-        ]),
+                    }).toList(),
+                  ]),
       ),
     );
   }

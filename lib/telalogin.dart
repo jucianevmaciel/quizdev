@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quizdev/colors.dart';
+import 'package:quizdev/login.dart';
 import 'package:quizdev/telacriarconta.dart';
 import 'package:quizdev/telanivel.dart';
 
@@ -11,6 +12,10 @@ class TelaLogin extends StatefulWidget {
 }
 
 class _TelaLoginState extends State<TelaLogin> {
+  Login login = Login();
+  TextEditingController recebeEmail = TextEditingController();
+    TextEditingController recebeSenha = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,10 +49,12 @@ class _TelaLoginState extends State<TelaLogin> {
                   children: [
                     // Campo de e-mail
                     TextField(
+                      controller: recebeEmail,
                       decoration: InputDecoration(
                         labelText: "Email",
                         hintText: "Digite o email",
                          suffixIcon: Icon(Icons.email_rounded),
+                         
                       ),
                     ),
                   ],
@@ -67,6 +74,7 @@ class _TelaLoginState extends State<TelaLogin> {
                   children: [
                     // Campo de senha
                     TextField(
+                      controller: recebeSenha,
                       obscureText: true,
                       decoration: InputDecoration(
                         labelText: "Senha",
@@ -102,10 +110,11 @@ class _TelaLoginState extends State<TelaLogin> {
               height: 45,
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => TelaNivel()),
-                  );
+                  // Navigator.pushReplacement(
+                  //   context,
+                  //   MaterialPageRoute(builder: (context) => TelaNivel()),
+                  // );
+                  login.login(recebeEmail.text, recebeSenha.text);
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.white,

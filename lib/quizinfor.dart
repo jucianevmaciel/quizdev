@@ -9,24 +9,28 @@ class QuizInfor extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: clicar,
-      child: Card(
-        color: nivel == "facil"
-            ? Colorsapp().violeta1
-            : nivel == "medio"
-                ? Colorsapp().violeta2
-                : Colorsapp().violeta3,
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: ListTile(
-            title: Text(
-              titulo,
-              textAlign: TextAlign.center,
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 30),
+      child: GestureDetector(
+        onTap: clicar,
+        child: Card(
+          color: nivel == "facil"
+              ? Colorsapp().violeta1
+              : nivel == "medio"
+                  ? Colorsapp().violeta2
+                  : Colorsapp().violeta3,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ListTile(
+              title: Text(
+                titulo,
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 18, fontFamily: "poppins"),
+              ),
             ),
           ),
         ),
-      ),
-        );
+          ),
+    );
   }
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:quizdev/colors.dart';
 import 'package:quizdev/tabnav.dart';
 import 'package:quizdev/inforperfil.dart';
 
@@ -25,7 +24,7 @@ class _TelaPerfilState extends State<TelaPerfil> {
               Center(
                 child: Text(
                   "Perfil",
-                  style: TextStyle(color: Colors.black, fontSize: 23),
+                  style: TextStyle(color: Colors.black, fontSize: 23, fontFamily: "Poppins"),
                 ),
               ),
               Divider(),
@@ -58,7 +57,7 @@ class _TelaPerfilState extends State<TelaPerfil> {
                   Padding(
                     padding: EdgeInsets.only(top: 20, left: 25),
                     child: Text("Juciane Vale Maciel",
-                        style: TextStyle(fontSize: 20)),
+                        style: TextStyle(fontSize: 20, fontFamily: "Poppins")),
                   ),
                 ],
               ),
