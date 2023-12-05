@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 
 class FimQuiz extends StatelessWidget {
+   final int? quantacertos;
+  const FimQuiz({super.key, required this.quantacertos});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Fim do Quiz'),
-      ),
-      body: Center(
+      body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
+            Text('Fim do Quiz'),
             Padding(
               padding: const EdgeInsets.only(top:220),
               child: Image.asset(
@@ -21,7 +22,7 @@ class FimQuiz extends StatelessWidget {
             ),
             SizedBox(height: 20),
             Text(
-              'Parabéns! Você concluiu o quiz!',
+              'Parabéns! Você concluiu o quiz com ${quantacertos} acertos!',
               style: TextStyle(fontSize: 18),
             ),
           ],

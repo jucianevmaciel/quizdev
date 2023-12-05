@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:quizdev/bancodedados/questoes.dart';
 import 'package:quizdev/colors.dart';
 import 'package:quizdev/fimquiz.dart';
 import 'package:quizdev/quizinfor.dart';
+import 'package:get/get.dart';
 
 class Perguntas extends StatefulWidget {
   final String nivel;
@@ -19,10 +21,11 @@ class _PerguntasState extends State<Perguntas> {
   int perguntaAtual = 0;
   int quantAcertos = 0;
   void alternativaCorreta(int resposta) {
-    respostaescolhida=resposta;
+    respostaescolhida = resposta;
     if (respostaescolhida == widget.quantQuestoes[perguntaAtual].altercorreta) {
       quantAcertos++;
-    }proximaPergunta();
+    }
+    proximaPergunta();
   }
 
   void proximaPergunta() {
@@ -34,7 +37,10 @@ class _PerguntasState extends State<Perguntas> {
     } else {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => FimQuiz()),
+        MaterialPageRoute(
+            builder: (context) => FimQuiz(
+                  quantacertos: quantAcertos,
+                )),
       );
     }
   }
@@ -53,20 +59,25 @@ class _PerguntasState extends State<Perguntas> {
       ),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(25, 0, 25, 0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(widget.quantQuestoes[perguntaAtual].questoes),
-            ...widget.quantQuestoes[perguntaAtual].alternativas.asMap().entries.map((e) {
-              int indexResposta = e.key;
-              String resposta = e.value;
-              return QuizInfor(titulo: resposta, nivel: widget.nivel, clicar: ()=> alternativaCorreta(indexResposta),);
-            }).toList(),
-                     ]
-            ),
-           
-        ),
-      
+        child:
+            Column(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+          Container(
+            child: Text(widget.quantQuestoes[perguntaAtual].questoes),
+          ),
+          ...widget.quantQuestoes[perguntaAtual].alternativas
+              .asMap()
+              .entries
+              .map((e) {
+            int indexResposta = e.key;
+            String resposta = e.value;
+            return QuizInfor(
+              titulo: resposta,
+              nivel: widget.nivel,
+              clicar: () => alternativaCorreta(indexResposta),
+            );
+          }).toList(),
+        ]),
+      ),
     );
   }
 }

@@ -12,9 +12,9 @@ class QuizInfor extends StatelessWidget {
     return GestureDetector(
       onTap: clicar,
       child: Card(
-        color: nivel == "Básico"
+        color: nivel == "facil"
             ? Colorsapp().violeta1
-            : nivel == "Médio"
+            : nivel == "medio"
                 ? Colorsapp().violeta2
                 : Colorsapp().violeta3,
         child: Padding(

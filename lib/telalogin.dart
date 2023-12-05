@@ -47,6 +47,7 @@ class _TelaLoginState extends State<TelaLogin> {
                       decoration: InputDecoration(
                         labelText: "Email",
                         hintText: "Digite o email",
+                         suffixIcon: Icon(Icons.email_rounded),
                       ),
                     ),
                   ],
