@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:quizdev/bancodedados/buscarquestoes.dart';
-import 'package:quizdev/bancodedados/questoes.dart';
-import 'package:quizdev/botoesniveis.dart';
-import 'package:quizdev/colors.dart';
-import 'package:quizdev/perguntas.dart';
-import 'package:quizdev/tabnav.dart';
+import 'package:quizdev/bancodedados/bancoperguntas/buscarquestoes.dart';
+import 'package:quizdev/bancodedados/bancoperguntas/questoes.dart';
+import 'package:quizdev/componentes/botoesniveis.dart';
+import 'package:quizdev/componentes/colors.dart';
+import 'package:quizdev/telas/telaperguntas.dart';
+import 'package:quizdev/componentes/tabnav.dart';
 
 class TelaNivel extends StatelessWidget {
   const TelaNivel({super.key});

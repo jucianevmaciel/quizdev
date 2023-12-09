@@ -1,25 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:quizdev/colors.dart';
-import 'package:quizdev/login.dart';
-import 'package:quizdev/telacriarconta.dart';
-import 'package:quizdev/telanivel.dart';
+import 'package:quizdev/componentes/colors.dart';
+import 'package:quizdev/componentes/login.dart';
+import 'package:quizdev/telas/telanivel.dart';
 
-class TelaLogin extends StatefulWidget {
-  const TelaLogin({super.key});
+class CriarConta extends StatefulWidget {
+   CriarConta({super.key});
 
   @override
-  State<TelaLogin> createState() => _TelaLoginState();
+  State<CriarConta> createState() => _CriarContaState();
+ 
 }
 
-class _TelaLoginState extends State<TelaLogin> {
-  Login login = Login();
+class _CriarContaState extends State<CriarConta> {
+   Login criarconta = Login();
+  TextEditingController recebeNome = TextEditingController();
   TextEditingController recebeEmail = TextEditingController();
-    TextEditingController recebeSenha = TextEditingController();
-
+  TextEditingController recebeSenha = TextEditingController();
+        
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colorsapp().violeta,
+        backgroundColor: Colorsapp().violeta,
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -27,17 +28,14 @@ class _TelaLoginState extends State<TelaLogin> {
             Padding(
               padding: const EdgeInsets.only(top: 120, bottom: 34),
               child: Text(
-                "LOGIN",
+                "CRIAR CONTA",
                 style: TextStyle(fontSize: 25, color: Colors.white),
               ),
             ),
-            Text(
-              "Bem vindo ao QUIZDEV",
-              style: TextStyle(fontSize: 20, color: Colors.white),
-            ),
+           
             Padding(
               padding: const EdgeInsets.only(
-                  top: 90, bottom: 30, left: 40, right: 40),
+                  top: 60, bottom: 30, left: 40, right: 40),
               child: Container(
                 padding: EdgeInsets.all(8),
                 decoration: BoxDecoration(
@@ -47,20 +45,19 @@ class _TelaLoginState extends State<TelaLogin> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    // Campo de e-mail
+                   
                     TextField(
-                      controller: recebeEmail,
+                      controller: recebeNome,
                       decoration: InputDecoration(
-                        labelText: "Email",
-                        hintText: "Digite o email",
-                         suffixIcon: Icon(Icons.email_rounded),
-                         
+                        labelText: "Nome",
+                        hintText: "Digite o nome",
                       ),
                     ),
                   ],
                 ),
               ),
             ),
+
             Padding( padding: const EdgeInsets.only(
                 left: 40, right: 40), 
               child: Container(
@@ -72,7 +69,32 @@ class _TelaLoginState extends State<TelaLogin> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+
                     // Campo de senha
+                    TextField(
+                      controller: recebeEmail,
+                      decoration: InputDecoration(
+                        labelText: "Email",
+                        hintText: "Digite o email",
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
+              Padding(
+              padding: const EdgeInsets.only(
+                  top: 30, bottom: 30, left: 40, right: 40),
+              child: Container(
+                padding: EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.all(Radius.circular(15)),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
                     TextField(
                       controller: recebeSenha,
                       obscureText: true,
@@ -86,24 +108,7 @@ class _TelaLoginState extends State<TelaLogin> {
                 ),
               ),
             ),
-            GestureDetector(
-              onTap: () {
-                print("Esqueceu a senha?");
-              },
-              child: Container(
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10, left: 180),
-                      child: Text(
-                        "Esqueceu a senha?",
-                        style: TextStyle(color: Colors.white, fontSize: 16),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
+           
             SizedBox(height: 90),
             Container(
               width: 200,
@@ -114,7 +119,7 @@ class _TelaLoginState extends State<TelaLogin> {
                   //   context,
                   //   MaterialPageRoute(builder: (context) => TelaNivel()),
                   // );
-                  login.login(recebeEmail.text, recebeSenha.text);
+                   criarconta.criarconta(recebeNome.text, recebeEmail.text, recebeSenha.text);
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.white,
@@ -124,34 +129,15 @@ class _TelaLoginState extends State<TelaLogin> {
                   minimumSize: Size(200, 45),
                 ),
                 child: Text(
-                  "Entrar",
+                  "Criar",
                   style: TextStyle(
                     fontSize: 18,
                   ),
                 ),
               ),
             ),
-            GestureDetector(
-              onTap: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => CriarConta()),
-                );
-              },
-              child: Container(
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10),
-                      child: Text(
-                        "Não tem Conta? Criar",
-                        style: TextStyle(color: Colors.white, fontSize: 16),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
+           
+          
             SizedBox(height: 20),
           ],
         ),

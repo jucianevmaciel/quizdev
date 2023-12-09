@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:quizdev/tabnav.dart';
-import 'package:quizdev/inforperfil.dart';
+import 'package:quizdev/componentes/tabnav.dart';
+import 'package:quizdev/componentes/inforperfil.dart';
 
 class TelaPerfil extends StatefulWidget {
   const TelaPerfil({super.key});

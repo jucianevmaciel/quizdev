@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:quizdev/colors.dart';
-import 'package:quizdev/telaconquista.dart';
-import 'package:quizdev/telanivel.dart';
-import 'package:quizdev/telaperfil.dart';
+import 'package:quizdev/componentes/colors.dart';
+import 'package:quizdev/telas/telaconquista.dart';
+import 'package:quizdev/telas/telanivel.dart';
+import 'package:quizdev/telas/telaperfil.dart';
 
 class TabNav extends StatefulWidget {
   final int telaatual;

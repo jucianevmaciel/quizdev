@@ -1,5 +1,5 @@
-import 'package:quizdev/bancodedados/bancodedados.dart';
-import 'package:quizdev/bancodedados/questoes.dart';
+import 'package:quizdev/bancodedados/bancoperguntas/bancodedados.dart';
+import 'package:quizdev/bancodedados/bancoperguntas/questoes.dart';
 
 List<Questoes> buscaPerguntas(String nivel) {
   return BancodeDados()

@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:quizdev/telanivel.dart';
+import 'package:quizdev/telas/telanivel.dart';
 
 class Login extends GetxController {
   static Login instance = Get.find();

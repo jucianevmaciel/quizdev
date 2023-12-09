@@ -1,4 +1,4 @@
-import 'package:quizdev/bancodedados/questoes.dart';
+import 'package:quizdev/bancodedados/bancoperguntas/questoes.dart';
 
 class BancodeDados{
 List <Questoes> perguntasquiz=[

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quizdev/tabnav.dart';
+import 'package:quizdev/componentes/tabnav.dart';
 
 
 
@@ -29,6 +29,8 @@ class _TelaConquistaState extends State<TelaConquista> {
                 ),
               ),
               Divider(),
+
+              
             ],
           ),
         ),

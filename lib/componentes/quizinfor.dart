@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quizdev/colors.dart';
+import 'package:quizdev/componentes/colors.dart';
 
 class QuizInfor extends StatelessWidget {
   const QuizInfor({super.key, required this.titulo, required this.nivel, this.clicar});
