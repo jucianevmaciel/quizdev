@@ -21,7 +21,7 @@ class BotoesNiveis extends StatelessWidget {
           padding: EdgeInsets.all(10),
           child: Text(
             texto,
-            style: TextStyle(color: Colors.black, fontSize: 23),
+            style: TextStyle(color: Colors.black, fontSize: 23, fontFamily: "Poppins"),
           ),
         ),
       ),

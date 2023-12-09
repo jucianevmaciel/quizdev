@@ -14,7 +14,7 @@ class TelaLogin extends StatefulWidget {
 class _TelaLoginState extends State<TelaLogin> {
   Login login = Login();
   TextEditingController recebeEmail = TextEditingController();
-    TextEditingController recebeSenha = TextEditingController();
+  TextEditingController recebeSenha = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -53,16 +53,15 @@ class _TelaLoginState extends State<TelaLogin> {
                       decoration: InputDecoration(
                         labelText: "Email",
                         hintText: "Digite o email",
-                         suffixIcon: Icon(Icons.email_rounded),
-                         
+                        suffixIcon: Icon(Icons.email_rounded),
                       ),
                     ),
                   ],
                 ),
               ),
             ),
-            Padding( padding: const EdgeInsets.only(
-                left: 40, right: 40), 
+            Padding(
+              padding: const EdgeInsets.only(left: 40, right: 40),
               child: Container(
                 padding: EdgeInsets.all(8),
                 decoration: BoxDecoration(
@@ -97,7 +96,11 @@ class _TelaLoginState extends State<TelaLogin> {
                       padding: const EdgeInsets.only(top: 10, left: 180),
                       child: Text(
                         "Esqueceu a senha?",
-                        style: TextStyle(color: Colors.white, fontSize: 16),
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontFamily: "Poppins",
+                        ),
                       ),
                     ),
                   ],
@@ -145,7 +148,11 @@ class _TelaLoginState extends State<TelaLogin> {
                       padding: const EdgeInsets.only(top: 10),
                       child: Text(
                         "Não tem Conta? Criar",
-                        style: TextStyle(color: Colors.white, fontSize: 16),
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontFamily: "Poppins",
+                        ),
                       ),
                     ),
                   ],

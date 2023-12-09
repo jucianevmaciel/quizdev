@@ -29,7 +29,7 @@ class _CriarContaState extends State<CriarConta> {
               padding: const EdgeInsets.only(top: 120, bottom: 34),
               child: Text(
                 "CRIAR CONTA",
-                style: TextStyle(fontSize: 25, color: Colors.white),
+                style: TextStyle(fontSize: 25, color: Colors.white, fontFamily: "Poppins"),
               ),
             ),
            
@@ -132,6 +132,7 @@ class _CriarContaState extends State<CriarConta> {
                   "Criar",
                   style: TextStyle(
                     fontSize: 18,
+                    fontFamily: "Poppins"
                   ),
                 ),
               ),

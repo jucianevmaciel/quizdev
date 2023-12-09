@@ -46,6 +46,17 @@ List <Questoes> perguntasquiz=[
       altercorreta: 3,
       nivel: 'facil',
     ),
+     Questoes(
+      questoes: 'Pergunta Facil 4',
+      alternativas: [
+        'resposta facil 1',
+        'resposta facil 2',
+        'resposta facil 3',
+        'resposta facil 4',
+      ],
+      altercorreta: 3,
+      nivel: 'facil',
+    ),
     Questoes(
       questoes: 'Pergunta Medio 1',
       alternativas: [

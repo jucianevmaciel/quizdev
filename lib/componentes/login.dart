@@ -1,9 +1,35 @@
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:quizdev/telas/telalogin.dart';
 import 'package:quizdev/telas/telanivel.dart';
 
 class Login extends GetxController {
   static Login instance = Get.find();
+  Rx<User?> _user = Rx <User?> (FirebaseAuth.instance.currentUser);
+  User? get user => _user.value;
+
+  @override
+  void onReady() {
+    // TODO: implement onReady
+    super.onReady();
+    _user.bindStream(FirebaseAuth.instance.userChanges());
+    ever(_user, _verificaLogin );
+  }
+
+void _verificaLogin (User? user){
+  if(user == null){
+    Get.offAll(()=>TelaLogin());
+    
+  }else{
+     Get.offAll(()=>TelaNivel());
+
+  }
+
+}
+void sairLogin()async{
+await FirebaseAuth.instance.signOut();
+ Get.offAll(()=>TelaLogin());
+}
 
   void login(String emailAddress, String password) async {
     try {
@@ -29,16 +55,15 @@ class Login extends GetxController {
   
   );
 
-  // Após criar o usuário com sucesso, você pode adicionar o nome ao perfil
-  await credential.user?.updateProfile(displayName: nome);
-
-  // Agora você pode acessar o nome assim:
-  final nomeDoUsuario = FirebaseAuth.instance.currentUser?.displayName;
+   User? usuario = FirebaseAuth.instance.currentUser;
+   usuario!.updateProfile(displayName: nome);
+   await usuario.reload();
+     
    Get.to(
         () => TelaNivel(),
       );
 
-  print('Usuário criado com sucesso. Nome do usuário: $nomeDoUsuario');
+  print('Usuário criado com sucesso. Nome do usuário: $nome');
 } on FirebaseAuthException catch (e) {
   if (e.code == 'weak-password') {
     print('A senha fornecida é muito fraca.');

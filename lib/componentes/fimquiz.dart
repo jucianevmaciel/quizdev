@@ -11,7 +11,7 @@ class FimQuiz extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Text('Fim do Quiz'),
+            Text('Fim do Quiz', style:TextStyle(fontSize: 25, fontFamily: "Poppins")),
             Padding(
               padding: const EdgeInsets.only(top:220),
               child: Image.asset(
@@ -23,7 +23,7 @@ class FimQuiz extends StatelessWidget {
             SizedBox(height: 20),
             Text(
               'Parabéns! Você concluiu o quiz com ${quantacertos} acertos!',
-              style: TextStyle(fontSize: 18),
+              style: TextStyle(fontSize: 18, fontFamily: "Poppins"),
             ),
           ],
         ),

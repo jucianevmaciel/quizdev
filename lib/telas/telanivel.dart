@@ -12,7 +12,7 @@ class TelaNivel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int quantQuestoes = 3;
+    int quantQuestoes = 4;
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(color: Colors.white),
@@ -25,7 +25,11 @@ class TelaNivel extends StatelessWidget {
               Center(
                 child: Text(
                   "Níveis",
-                  style: TextStyle(color: Colors.black, fontSize: 23),
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 23,
+                    fontFamily: "Poppins",
+                  ),
                 ),
               ),
               Divider(),
