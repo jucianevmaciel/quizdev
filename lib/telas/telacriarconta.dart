@@ -51,6 +51,9 @@ class _CriarContaState extends State<CriarConta> {
                       decoration: InputDecoration(
                         labelText: "Nome",
                         hintText: "Digite o nome",
+                        suffixIcon: Icon(Icons.people_alt_outlined),
+
+
                       ),
                     ),
                   ],
@@ -76,6 +79,8 @@ class _CriarContaState extends State<CriarConta> {
                       decoration: InputDecoration(
                         labelText: "Email",
                         hintText: "Digite o email",
+                        suffixIcon: Icon(Icons.email_rounded),
+
                       ),
                     ),
                   ],

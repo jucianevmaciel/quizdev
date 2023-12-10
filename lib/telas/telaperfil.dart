@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:quizdev/componentes/login.dart';
+import 'package:quizdev/componentes/notificacao.dart';
 import 'package:quizdev/componentes/tabnav.dart';
 import 'package:quizdev/componentes/inforperfil.dart';
 import 'package:quizdev/telas/telalogin.dart';
@@ -14,12 +15,29 @@ class TelaPerfil extends StatefulWidget {
 
 class _TelaPerfilState extends State<TelaPerfil> {
   Login login = Login();
+  void notificacoes() {
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext context) {
+          return SingleChildScrollView(
+            child: Container(
+              width: Get.width,
+              height: Get.height,
+              child: Notificacoes(
+                notiEmail: login.user?.email ?? "usuario",
+                notiNome: login.user?.displayName ?? "usuario",
+              ),
+            ),
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration:  BoxDecoration(color: Colors.white),
-        child:  Padding(
+        decoration: BoxDecoration(color: Colors.white),
+        child: Padding(
           padding: EdgeInsets.symmetric(vertical: 60, horizontal: 20),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -64,11 +82,13 @@ class _TelaPerfilState extends State<TelaPerfil> {
                   ),
                   Padding(
                     padding: EdgeInsets.only(top: 20, left: 25),
-                    child: Text(login.user?.displayName?? "usuario",
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontFamily: "Poppins",
-                        )),
+                    child: Text(
+                      login.user?.displayName ?? "usuario",
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontFamily: "Poppins",
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -78,6 +98,7 @@ class _TelaPerfilState extends State<TelaPerfil> {
                   texto: "Meus Dados",
                   cor: Colors.white,
                   iconData: Icons.list_alt,
+                   clicar: () => notificacoes(),
                 ),
               ),
               Padding(
@@ -101,17 +122,14 @@ class _TelaPerfilState extends State<TelaPerfil> {
                 child: InforPerfil(
                   texto: "Sair",
                   cor: Colors.white,
-                  clicar:()=>login.sairLogin(),
+                  clicar: () => login.sairLogin(),
                   iconData: Icons.arrow_back,
                 ),
               ),
             ],
           ),
         ),
-      
-          ),
-
-        
+      ),
       bottomNavigationBar: TabNav(
         telaatual: 2,
       ),

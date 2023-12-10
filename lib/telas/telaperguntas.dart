@@ -4,7 +4,7 @@ import 'package:quizdev/bancodedados/bancoConquista/conquista.dart';
 import 'package:quizdev/bancodedados/bancoConquista/hiveconfig.dart';
 import 'package:quizdev/bancodedados/bancoperguntas/questoes.dart';
 import 'package:quizdev/componentes/colors.dart';
-import 'package:quizdev/componentes/fimquiz.dart';
+import 'package:quizdev/telas/fimquiz.dart';
 import 'package:quizdev/componentes/quizinfor.dart';
 
 class Perguntas extends StatefulWidget {
@@ -18,22 +18,25 @@ class Perguntas extends StatefulWidget {
 }
 
 class _PerguntasState extends State<Perguntas> {
-  int? respostaescolhida;
+  int? respostaEscolhida;
   int perguntaAtual = 0;
   int quantAcertos = 0;
-  void alternativaCorreta(int resposta) {
-    respostaescolhida = resposta;
-    if (respostaescolhida == widget.quantQuestoes[perguntaAtual].altercorreta) {
-      quantAcertos++;
-    }
-    proximaPergunta();
+
+  void selecionarAlternativa(int indexResposta) {
+    (() {
+      respostaEscolhida = indexResposta;
+    });
+  }
+
+  bool alternativaCorreta() {
+    return respostaEscolhida == widget.quantQuestoes[perguntaAtual].altercorreta;
   }
 
   void proximaPergunta() async {
     if (perguntaAtual < widget.quantQuestoes.length - 1) {
       setState(() {
         perguntaAtual++;
-        respostaescolhida = null;
+        respostaEscolhida = null; // Limpar a resposta escolhida ao avançar para a próxima pergunta
       });
     } else {
       final double novaporcentagem = calculaporcentagem();
@@ -41,26 +44,25 @@ class _PerguntasState extends State<Perguntas> {
           await HiveConfig.porcentagemconquista(widget.nivel);
       if (novaporcentagem > buscarporcentagem) {
         final bool porcentagemSalva = await alteraporcentagem(novaporcentagem);
-        if (porcentagemSalva){
-           Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => FimQuiz(
-            quantacertos: quantAcertos,
-          ),
-        ),
-      );
-          
+        if (porcentagemSalva) {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => FimQuiz(
+                quantacertos: quantAcertos,
+              ),
+            ),
+          );
         }
-      }else{
-         Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => FimQuiz(
-            quantacertos: quantAcertos,
+      } else {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => FimQuiz(
+              quantacertos: quantAcertos,
+            ),
           ),
-        ),
-      );
+        );
       }
     }
   }
@@ -82,12 +84,21 @@ class _PerguntasState extends State<Perguntas> {
           porcentagem: porcentagem,
           quantAcertos: quantAcertos,
           nivel: nivel);
-          await HiveConfig.inserirconquista(conquista, id);
+      await HiveConfig.inserirconquista(conquista, id);
 
       return true;
     } catch (e) {
       print("Erro");
       return false;
+    }
+  }
+
+  void enviarResposta() {
+    if (respostaEscolhida != null) {
+      if (alternativaCorreta()) {
+        quantAcertos++;
+      }
+      proximaPergunta();
     }
   }
 
@@ -104,30 +115,46 @@ class _PerguntasState extends State<Perguntas> {
                 : Colorsapp().violeta3,
       ),
       body: Padding(
-        padding: const EdgeInsets.fromLTRB(25, 64, 25, 40),
-        child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-          Container(
-            child: Padding(
-              padding: const EdgeInsets.only(bottom: 40),
-              child: Text(
-                widget.quantQuestoes[perguntaAtual].questoes,
-                style: TextStyle(fontSize: 25, fontFamily: "Poppins"),
+        padding: const EdgeInsets.fromLTRB(25, 75, 25, 50),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Container(
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 50),
+                child: Text(
+                  widget.quantQuestoes[perguntaAtual].questoes,
+                  style: TextStyle(fontSize: 20, fontFamily: "Poppins"),
+                  textAlign: TextAlign.center,
+                ),
               ),
             ),
-          ),
-          ...widget.quantQuestoes[perguntaAtual].alternativas
-              .asMap()
-              .entries
-              .map((e) {
-            int indexResposta = e.key;
-            String resposta = e.value;
-            return QuizInfor(
-              titulo: resposta,
-              nivel: widget.nivel,
-              clicar: () => alternativaCorreta(indexResposta),
-            );
-          }).toList(),
-        ]),
+            ...widget.quantQuestoes[perguntaAtual].alternativas
+                .asMap()
+                .entries
+                .map((e) {
+              int indexResposta = e.key;
+              String resposta = e.value;
+              return QuizInfor(
+                titulo: resposta,
+                nivel: widget.nivel,
+                clicar: () => selecionarAlternativa(indexResposta),
+                isSelected: indexResposta == respostaEscolhida,
+                isCorrect: alternativaCorreta(),
+              );
+            }).toList(),
+            Padding(
+              padding: const EdgeInsets.only(top: 40),
+              child: ElevatedButton(
+                onPressed: () => enviarResposta(),
+                child: const Text(
+                  "Enviar",
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
