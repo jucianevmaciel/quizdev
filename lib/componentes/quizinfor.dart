@@ -5,16 +5,19 @@ class QuizInfor extends StatefulWidget {
   final String titulo;
   final String nivel;
   final VoidCallback clicar;
-  final bool isSelected;
-  final bool isCorrect;
+  bool isSelected;
+  bool isCorrect;
+  final bool perguntarespondida ;
+
 
   QuizInfor({
     Key? key,
     required this.titulo,
     required this.nivel,
     required this.clicar,
-    required this.isSelected,
-    required this.isCorrect,
+    this.isSelected = false,
+    this.isCorrect = false,
+    required this.perguntarespondida,
   }) : super(key: key);
 
   @override
@@ -28,9 +31,13 @@ class _QuizInforState extends State<QuizInfor> {
       padding: const EdgeInsets.only(bottom: 20),
       child: GestureDetector(
         onTap: () {
-          if (!widget.isSelected) {
-            widget.clicar();
-          }
+        if(!widget.perguntarespondida && widget.clicar!=null){
+          setState(() {
+            widget.isSelected =!widget.isSelected;
+          });
+          widget.clicar();
+
+        }
         },
         child: Container(
           height: 80,

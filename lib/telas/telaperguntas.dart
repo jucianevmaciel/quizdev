@@ -21,13 +21,13 @@ class _PerguntasState extends State<Perguntas> {
   int? respostaEscolhida;
   int perguntaAtual = 0;
   int quantAcertos = 0;
+  bool perguntarespondida = false;
 
   void selecionado(int indexResposta) {
     setState(() {
-      if (respostaEscolhida == indexResposta) {
-        respostaEscolhida = null;
-      } else {
+      if (!perguntarespondida){
         respostaEscolhida = indexResposta;
+        perguntarespondida = true;
       }
     });
   }
@@ -103,6 +103,9 @@ class _PerguntasState extends State<Perguntas> {
         quantAcertos++;
       }
       proximaPergunta();
+      setState(() {
+        perguntarespondida = false;
+      });
     }
   }
 
@@ -145,6 +148,7 @@ class _PerguntasState extends State<Perguntas> {
                 clicar: () => selecionado(indexResposta),
                 isSelected: indexResposta == respostaEscolhida,
                 isCorrect: alternativaCorreta(),
+                perguntarespondida: perguntarespondida,
               );
             }).toList(),
             Padding(
