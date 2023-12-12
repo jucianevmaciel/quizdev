@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quizdev/componentes/colors.dart';
 
 class QuizInfor extends StatefulWidget {
   final String titulo;
@@ -37,10 +38,10 @@ class _QuizInforState extends State<QuizInfor> {
             color: widget.isSelected
                 ? (widget.isCorrect ? Colors.green : Colors.red)
                 : widget.nivel == "facil"
-                    ? Colors.yellow // Cor padrão quando não selecionado
+                    ? Colorsapp().violeta1 // Cor padrão quando não selecionado
                     : widget.nivel == "medio"
-                        ? Colors.yellow // Cor padrão quando não selecionado
-                        : Colors.yellow, // Cor padrão quando não selecionado
+                        ? Colorsapp().violeta2 // Cor padrão quando não selecionado
+                        : Colorsapp().violeta3, // Cor padrão quando não selecionado
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: ListTile(

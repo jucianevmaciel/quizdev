@@ -22,9 +22,13 @@ class _PerguntasState extends State<Perguntas> {
   int perguntaAtual = 0;
   int quantAcertos = 0;
 
-  void selecionarAlternativa(int indexResposta) {
-    (() {
-      respostaEscolhida = indexResposta;
+  void selecionado(int indexResposta) {
+    setState(() {
+      if (respostaEscolhida == indexResposta) {
+        respostaEscolhida = null;
+      } else {
+        respostaEscolhida = indexResposta;
+      }
     });
   }
 
@@ -36,7 +40,7 @@ class _PerguntasState extends State<Perguntas> {
     if (perguntaAtual < widget.quantQuestoes.length - 1) {
       setState(() {
         perguntaAtual++;
-        respostaEscolhida = null; // Limpar a resposta escolhida ao avançar para a próxima pergunta
+        respostaEscolhida = null;
       });
     } else {
       final double novaporcentagem = calculaporcentagem();
@@ -105,7 +109,7 @@ class _PerguntasState extends State<Perguntas> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: AppBar( 
         title: Text(widget.nivel),
         centerTitle: true,
         backgroundColor: widget.nivel == "facil"
@@ -138,7 +142,7 @@ class _PerguntasState extends State<Perguntas> {
               return QuizInfor(
                 titulo: resposta,
                 nivel: widget.nivel,
-                clicar: () => selecionarAlternativa(indexResposta),
+                clicar: () => selecionado(indexResposta),
                 isSelected: indexResposta == respostaEscolhida,
                 isCorrect: alternativaCorreta(),
               );

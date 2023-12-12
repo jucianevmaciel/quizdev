@@ -18,7 +18,7 @@ class FimQuiz extends StatelessWidget {
               padding: const EdgeInsets.only(top: 220),
               child: Image.asset(
                 'assets/images/trofeu.png',
-                width: 150, // Ajuste o tamanho conforme necessário
+                width: 150, 
                 height: 150,
               ),
             ),
