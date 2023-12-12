@@ -104,14 +104,6 @@ class _TelaPerfilState extends State<TelaPerfil> {
               Padding(
                 padding: EdgeInsets.only(top: 35, left: 8),
                 child: InforPerfil(
-                  texto: "Notificações",
-                  cor: Colors.white,
-                  iconData: Icons.notifications_none,
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(top: 35, left: 8),
-                child: InforPerfil(
                   texto: "Sobre",
                   cor: Colors.white,
                   iconData: Icons.help_outline,
