@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:quizdev/componentes/login.dart';
 import 'package:quizdev/componentes/notificacao.dart';
+import 'package:quizdev/componentes/sobre.dart';
 import 'package:quizdev/componentes/tabnav.dart';
 import 'package:quizdev/componentes/inforperfil.dart';
 import 'package:quizdev/telas/telalogin.dart';
@@ -31,6 +32,24 @@ class _TelaPerfilState extends State<TelaPerfil> {
           );
         });
   }
+   void sobre() {
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext context) {
+          return SingleChildScrollView(
+            child: Container(
+              width: Get.width,
+              height: Get.height,
+              child: Sobre(
+                inforsobre: "Quiz sobre programação",
+                
+              ),
+            ),
+          );
+        });
+  }
+
+  
 
   @override
   Widget build(BuildContext context) {
@@ -107,6 +126,7 @@ class _TelaPerfilState extends State<TelaPerfil> {
                   texto: "Sobre",
                   cor: Colors.white,
                   iconData: Icons.help_outline,
+                  clicar: ()=> sobre(),
                 ),
               ),
               Padding(
